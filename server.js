@@ -33,5 +33,5 @@ app.set('view engine', 'handlebars');
 
 //database connection
 app.listen(PORT, function() {
-  console.log("Listening on:" + PORT)
+  console.log("Listening on:" + PORT);
 });
