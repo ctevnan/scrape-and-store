@@ -13,6 +13,16 @@ var request = require('request');
 var app = express();
 var PORT = process.env.PORT || 8080;
 
+http.createServer(function (request, response) {
+  //Send http header
+  //http Status: 200 : OK
+  //Content Type: text/plain
+  response.writeHead(200, {'Content-Type': 'text/plain'});
+
+  //Send the response body as "Hello World"
+  response.end('Hello World\n');
+}).listen(8081);
+
 app.use(bodyParser.urlencoded({
   extended: false
 }));
