@@ -95,6 +95,16 @@ app.post('/submit', function (req, res) {
   });  
 });
 
+//route to notes
+app.get('/notes', function (req, res) {
+  Note.find({}, function (err, doc) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(doc);
+    }
+  });
+});
 
 //server connection 
 app.listen(PORT, function() {
