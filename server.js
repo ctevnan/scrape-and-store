@@ -27,7 +27,7 @@ app.use('/', routes);
 
 app.get('/note', function (req, res) {
   Note.find
-}
+});
 
 app.use(logger('dev'));
 
@@ -53,7 +53,8 @@ db.once('open', function() {
 });
 
 //req schemas
-var Note = require('./')  
+var Note = require('./models/notemodel.js');
+var User = require('./models/usermodel.js');  
 
 
 //server connection 
