@@ -56,6 +56,17 @@ db.once('open', function() {
 var Note = require('./models/notemodel.js');
 var User = require('./models/usermodel.js');  
 
+//lets see if I can get a fake user working
+var practiceUser = new User({
+  name: "Bruce Wayne"
+});
+practiceUser.save(function (err, doc) {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log(doc);  
+  }
+});
 
 //server connection 
 app.listen(PORT, function() {
