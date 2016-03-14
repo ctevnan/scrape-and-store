@@ -25,6 +25,10 @@ request('http://www.cnn.com', function(error, response, body) {
 var routes = require('./routes/index');
 app.use('/', routes);
 
+app.get('/', function (req, res) {
+  res.send(index.html);
+});
+
 app.get('/note', function (req, res) {
   Note.find
 });
