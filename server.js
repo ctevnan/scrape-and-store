@@ -3,6 +3,7 @@ var express = require('express');
 var expressHandlebars = require('express-handlebars');
 var bodyParser = require('body-parser');
 var cheerio = require('cheerio');
+var logger = require('morgan');
 var mongoose = require('mongoose');  //orm 
 var request = require('request');
 var app = express();
@@ -24,15 +25,38 @@ request('http://www.cnn.com', function(error, response, body) {
 var routes = require('./routes/index');
 app.use('/', routes);
 
+app.get('/note', function (req, res) {
+  Note.find
+}
+
+app.use(logger('dev'));
+
 app.use(bodyParser.urlencoded({
   extended: false
 }));
+
+app.use(express.static('public'));
 
 //set up handlebars layout
 app.engine('handlebars', expressHandlebars({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-//db connection 
+//db config
+mongoose.connect('mongodb://localhost/scrapeddataapp');
+var db = mongoose.connection;
+
+db.on('error', function (err) {
+  console.log('Mongoose Error: ', err);
+});
+db.once('open', function() {
+  console.log('Mongoose connection successful!');
+});
+
+//req schemas
+var Note = require('./')  
+
+
+//server connection 
 app.listen(PORT, function() {
   console.log("Listening on:" + PORT);
 }); 
