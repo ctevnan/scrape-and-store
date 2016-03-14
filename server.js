@@ -106,6 +106,18 @@ app.get('/notes', function (req, res) {
   });
 });
 
+//route to see user w/o populating
+app.get('/user', function (req, res) {
+  User.find({}, function (err, doc) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(doc);
+    }
+  });
+});
+
+
 //server connection 
 app.listen(PORT, function() {
   console.log("Listening on:" + PORT);
