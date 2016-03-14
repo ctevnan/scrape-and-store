@@ -45,7 +45,7 @@ app.use(express.static('public'));
 app.engine('handlebars', expressHandlebars({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-//db config
+//db config //working!
 mongoose.connect('mongodb://localhost/scrapeddataapp');
 var db = mongoose.connection;
 
@@ -60,7 +60,7 @@ db.once('open', function() {
 var Note = require('./models/notemodel.js');
 var User = require('./models/usermodel.js');  
 
-//lets see if I can get a fake user working
+//lets see if I can get a fake user working  //Batman working!
 var practiceUser = new User({
   name: "Bruce Wayne"
 });
@@ -71,6 +71,30 @@ practiceUser.save(function (err, doc) {
     console.log(doc);  
   }
 });
+
+//making a new note
+app.post('/submit', function (req, res) {
+  var newNote = new Note (req.body);
+
+//saving note
+  newNote.save(function (err, doc) {
+
+    if (err) {
+      res.send(err);
+    } else {
+
+//find user, push note id into the user's note array
+      User.findOneAndUpdate({}, {$push: {'Note': doc._id}}, {new: true}, function (err, doc) {
+        if (err) {
+          res.send(err);
+        } else {
+          res.send(doc);
+        }
+      });      
+    }
+  });  
+});
+
 
 //server connection 
 app.listen(PORT, function() {
