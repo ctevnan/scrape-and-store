@@ -117,25 +117,25 @@ app.get('/user', function (req, res) {
 });
 
 //route to see user w/populating
-//app.get('/populateduser', function (req, res) {
-  //populateduser.find({}, function (err, doc) {
-//    if (err) {
-//      res.send(err);
-//    } else {
-//      res.send(doc);
-//    }
-//  });
-//});
+app.get('/populateduser', function (req, res) {
+  populateduser.find({}, function (err, doc) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(doc);
+    }
+  });
+});
 
-//User
-  //.find([]) //returns users
-  //.populate('notes')
-  //.exec(function (err, dbUser) {
-    //if (err) return handleError(err);
-    //console.log('The creator %s', )
+User
+  .find([]) //returns users
+  .populate('notes')
+  .exec(function (err, dbUser) {
+    if (err) return handleError(err);
+    console.log('The creator %s', )
     //prints "The creator is Carolyn"
-  //});
-//});
+  });
+});
 
 //server connection 
 app.listen(PORT, function() {
