@@ -132,10 +132,10 @@ User
   .populate('notes')
   .exec(function (err, dbUser) {
     if (err) return handleError(err);
-    console.log('The creator %s');
+    console.log('The creator is %s');
     //prints "The creator is Carolyn"
-  });
 });
+
 
 //server connection 
 app.listen(PORT, function() {
