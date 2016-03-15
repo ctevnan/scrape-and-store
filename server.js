@@ -13,7 +13,7 @@ request('http://www.cnn.com', function(error, response, body) {
   //hand html response to cheerio
   //assign that to a local $ var to provide familiar jQuery syntax
   var $ = cheerio.load(body);
-  console.log($);
+  console.log("LOOKIE AT ME" + $);
 
   //same code used in browser
   $('h2').each(function() {
@@ -64,6 +64,7 @@ var User = require('./models/usermodel.js');
 var practiceUser = new User({
   name: "Bruce Wayne"
 });
+
 practiceUser.save(function (err, doc) {
   if (err) {
     console.log(err);
@@ -127,14 +128,16 @@ app.get('/populateduser', function (req, res) {
   });
 });
 
-User
-  .find([]) //returns users
-  .populate('notes')
-  .exec(function (err, dbUser) {
-    if (err) return handleError(err);
-    console.log('The creator is %s');
-    //prints "The creator is Carolyn"
-});
+// User
+//   .find([]) //returns users
+//   .populate('notes')
+//   .exec(function (err, dbUser) {
+//     if (err) return handleError(err);
+//     console.log('The creator is %s', PORT);
+//     console.log('The creator is ' + PORT);
+
+//     //prints "The creator is port 8080"
+// });
 
 
 //server connection 
