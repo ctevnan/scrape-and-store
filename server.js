@@ -78,13 +78,12 @@ app.post('/submit', function (req, res) {
 
 //saving note
   newNote.save(function (err, doc) {
-
     if (err) {
       res.send(err);
     } else {
 
 //find user, push note id into the user's note array
-      User.findOneAndUpdate({}, {$push: {'Note': doc._id}}, {new: true}, function (err, doc) {
+      User.findOneAndUpdate({}, {$push: {'notes': doc._id}}, {new: true}, function (err, doc) {
         if (err) {
           res.send(err);
         } else {
