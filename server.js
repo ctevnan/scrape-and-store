@@ -117,6 +117,16 @@ app.get('/user', function (req, res) {
   });
 });
 
+//route to see user w/populating
+//app.get('/populateduser', function (req, res) {
+  //populateduser.find({}, function (err, doc) {
+//    if (err) {
+//      res.send(err);
+//    } else {
+//      res.send(doc);
+//    }
+//  });
+//});
 
 //server connection 
 app.listen(PORT, function() {
