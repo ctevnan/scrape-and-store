@@ -128,6 +128,14 @@ app.get('/user', function (req, res) {
 //  });
 //});
 
+//User
+//.find([]) //returns a;; users
+//.populate('notes')
+//.exec(function (err, dbUser) {
+//  if (err) return handleError(err);
+//  console.log('The creator %s', )
+//});
+
 //server connection 
 app.listen(PORT, function() {
   console.log("Listening on:" + PORT);
