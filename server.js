@@ -12,8 +12,13 @@ var PORT = process.env.PORT || 8080;
 request('http://www.cnn.com', function(error, response, body) {
   //hand html response to cheerio
   //assign that to a local $ var to provide familiar jQuery syntax
-  var $ = cheerio.load(body);
-  console.log("LOOKIE AT ME" + $);
+  var $ = cheerio.load('<h2 class="title">Title</h2>');
+
+  $('h2.title').text('Welcome to The Daily News Brief featuring CNN.com');
+  $('h2').addClass('Welcome');
+
+  $.html();
+  //console.log('h2' + $);
 
   //same code used in browser
   $('h2').each(function() {
@@ -27,10 +32,6 @@ app.use('/', routes);
 
 app.get('/', function (req, res) {
   res.send(index.html);
-});
-
-app.get('/note', function (req, res) {
-  Note.find
 });
 
 app.use(logger('dev'));
@@ -65,13 +66,13 @@ var practiceUser = new User({
   name: "Bruce Wayne"
 });
 
-practiceUser.save(function (err, doc) {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log(doc);  
-  }
-});
+//practiceUser.save(function (err, doc) {
+//  if (err) {
+//    console.log(err);
+//  } else {
+//    console.log(doc);  
+//  }
+//});
 
 //making a new note
 app.post('/submit', function (req, res) {
@@ -125,20 +126,8 @@ app.get('/populateduser', function (req, res) {
     } else {
       res.send(doc);
     }
-  });
+  })
 });
-
-// User
-//   .find([]) //returns users
-//   .populate('notes')
-//   .exec(function (err, dbUser) {
-//     if (err) return handleError(err);
-//     console.log('The creator is %s', PORT);
-//     console.log('The creator is ' + PORT);
-
-//     //prints "The creator is port 8080"
-// });
-
 
 //server connection 
 app.listen(PORT, function() {
