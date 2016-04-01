@@ -26,6 +26,7 @@ var port = 3000;
 app.engine('handlebars', expressHandlebars({
   defaultLayout: 'main'
 }));
+
 app.set('view engine', 'handlebars');
 
 app.use(bodyParser.urlencoded({
@@ -40,6 +41,11 @@ var routes = require('./config/routes.js');
 
 app.use('/', routes);
 app.use('/test', routes); 
+app.use('/fetch', routes);
+app.use('/gather', routes);
+app.use('/check', routes);
+app.use('/save', routes);
+app.use('/delete', routes);
 
 //server connection 
 app.listen(port, function() {
