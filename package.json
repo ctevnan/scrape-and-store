@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/ctevnan/scrape-and-store/issues"
   },
-  "homepage": "https://github.com/ctevnan/scrape-and-store#readme"
+  "homepage": "https://github.com/ctevnan/scrape-and-store#readme",
+  "dependencies": {
+    "path": "^0.12.7"
+  }
 }

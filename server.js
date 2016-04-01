@@ -6,8 +6,26 @@ var cheerio = require('cheerio');
 var logger = require('morgan');
 var mongoose = require('mongoose');  //orm 
 var request = require('request');
+var path = require('path');
 var app = express();
-var PORT = process.env.PORT || 8080;
+//var PORT = process.env.PORT || 8080;
+
+//mongoose connect //working!
+var db = 'mongodb://localhost/scrapeddataapp';
+mongoose.connect(db, function (err){
+  if(err) {
+    console.log(err);
+  } else {
+    console.log('mongoose connection is successful');
+  }
+}); 
+
+db.on('error', function (err) {
+  console.log('Mongoose Error: ', err);
+});
+db.once('open', function() {
+  console.log('Mongoose connection successful!');
+});
 
 request('http://www.cnn.com', function(error, response, body) {
   //hand html response to cheerio
