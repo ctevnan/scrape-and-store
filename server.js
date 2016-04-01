@@ -8,9 +8,8 @@ var mongoose = require('mongoose');  //orm
 var request = require('request');
 var path = require('path');
 var app = express();
-//var PORT = process.env.PORT || 8080;
 
-//mongoose connect //working!
+//mongoose connect
 var db = 'mongodb://localhost/scrapeddataapp';
 mongoose.connect(db, function (err){
   if(err) {
@@ -20,12 +19,15 @@ mongoose.connect(db, function (err){
   }
 }); 
 
-db.on('error', function (err) {
-  console.log('Mongoose Error: ', err);
-});
-db.once('open', function() {
-  console.log('Mongoose connection successful!');
-});
+app.use(express.static(__dirname + '/public'));
+var port = 3000;
+
+//db.on('error', function (err) {
+//  console.log('Mongoose Error: ', err);
+//});
+//db.once('open', function() {
+//  console.log('Mongoose connection successful!');
+//});
 
 request('http://www.cnn.com', function(error, response, body) {
   //hand html response to cheerio
@@ -58,22 +60,9 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 
-app.use(express.static('public'));
-
 //set up handlebars layout
 app.engine('handlebars', expressHandlebars({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
-
-//db config //working!
-mongoose.connect('mongodb://localhost/scrapeddataapp');
-var db = mongoose.connection;
-
-db.on('error', function (err) {
-  console.log('Mongoose Error: ', err);
-});
-db.once('open', function() {
-  console.log('Mongoose connection successful!');
-});
 
 //req schemas
 var Note = require('./models/notemodel.js');
