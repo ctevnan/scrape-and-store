@@ -28,12 +28,15 @@ app.engine('handlebars', expressHandlebars({
 }));
 app.set('view engine', 'handlebars');
 
-//db.on('error', function (err) {
-//  console.log('Mongoose Error: ', err);
-//});
-//db.once('open', function() {
-//  console.log('Mongoose connection successful!');
-//});
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
+
+//routes
+var routes = require('./config/routes.js');
+
+app.use('/', routes);
+app.use('/test', routes);
 
 request('http://www.cnn.com', function(error, response, body) {
   //hand html response to cheerio
@@ -52,19 +55,11 @@ request('http://www.cnn.com', function(error, response, body) {
   });
 });  
 
-//routes
-var routes = require('./routes/index');
-app.use('/', routes);
-
 app.get('/', function (req, res) {
   res.send(index.html);
 });
 
 app.use(logger('dev'));
-
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
 
 //req schemas
 var Note = require('./models/notemodel.js');
