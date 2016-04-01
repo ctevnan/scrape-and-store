@@ -6,7 +6,6 @@ var cheerio = require('cheerio');
 var logger = require('morgan');
 var mongoose = require('mongoose');  //orm 
 var request = require('request');
-var path = require('path');
 var app = express();
 
 //mongoose connect
