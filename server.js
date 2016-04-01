@@ -22,6 +22,12 @@ mongoose.connect(db, function (err){
 app.use(express.static(__dirname + '/public'));
 var port = 3000;
 
+//set up handlebars layout
+app.engine('handlebars', expressHandlebars({
+  defaultLayout: 'main'
+}));
+app.set('view engine', 'handlebars');
+
 //db.on('error', function (err) {
 //  console.log('Mongoose Error: ', err);
 //});
@@ -59,10 +65,6 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({
   extended: false
 }));
-
-//set up handlebars layout
-app.engine('handlebars', expressHandlebars({defaultLayout: 'main'}));
-app.set('view engine', 'handlebars');
 
 //req schemas
 var Note = require('./models/notemodel.js');
