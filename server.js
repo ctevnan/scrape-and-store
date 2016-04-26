@@ -6,6 +6,7 @@ var cheerio = require('cheerio');
 var logger = require('morgan');
 var mongoose = require('mongoose');  //orm 
 var request = require('request');
+var port = process.env.PORT || 3000;
 
 var app = express();
 
@@ -20,9 +21,10 @@ mongoose.connect(db, function (err){
 }); 
 
 app.use(express.static(__dirname + '/public'));
-var port = 3000;
+
 
 //set up handlebars layout
+var expressHandlebars = require('express-handlebars');
 app.engine('handlebars', expressHandlebars({
   defaultLayout: 'main'
 }));
@@ -48,6 +50,6 @@ app.use('/save', routes);
 app.use('/delete', routes);
 
 //server connection 
-app.listen(port, function() {
-  console.log("Listening on port:" + port);
+app.listen(3000, function() {
+  console.log("Listening on port: " + PORT);
 }); 
