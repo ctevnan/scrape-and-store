@@ -20,7 +20,7 @@ router.get('/test', function (req, res) {
 router.post('/fetch', function (req, res) {
   headlinesController.fetch(); {
   res.send('success');
-});
+};
 
 //check mongo for data
 router.get('/check', function (req, res) {
@@ -43,5 +43,11 @@ router.post('/save', function (req, res) {
   });
 });
 
+//delete note from mongo
+router.delete('/delete', function (req, res) {
+  notesController.delete(req.body, function(data) {
+    res.json(data);
+  });  
+});
 
-
+module.exports = router;
