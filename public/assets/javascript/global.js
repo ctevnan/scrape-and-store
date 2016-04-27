@@ -122,3 +122,93 @@ var deleteNote = function() {
 
   });
 };
+//type animation funct
+var typeIt = function() {
+  $("typewriter-headline").remove();
+  $("#typewriter-summary").remove();
+  var h = 0;
+  var s = 0;
+  var newsText;
+
+  if (state > 0) {
+    side = state - 1;
+  } else {
+    side = 5;
+  }
+
+  $("." + sideAry[side]).append("<div id='typewriter-headline'></div>");
+  $("." + sideAry[side]).append("<div id='typewriter-summary'></div>");
+
+  //cycle to diff story
+  console.log(mongoData);
+  var headline = mongoData[dataCount].headline;
+  var summary = mongoData[dataCount].summary;
+  dataCount++;
+  //new summary
+  (function type () {
+    console.log(newsText);
+    printHeadline = headline.slice(0, ++h);
+    printSummary = summary.slice(0, ++s);
+
+    //put txt w js
+    $("#typewriter-headline").text(printHeadline);
+    $("#typewriter-summary").text(printSummary);
+
+    //return stop when txt = write txt
+    if (printedHeadline.length === headline.length && printSummary.length === summary.length) {
+      return;
+    }
+    setTimeout(type, 35);
+  }());
+};
+
+//render headline
+var headline = function() {
+  var show = "|| Article:" + (dataCount + 1) + " ||";
+  $("#headline").text(show);
+  $("#headline").fadeIn()
+    .css({
+      position: 'relative',
+      'text-align':'center',
+      top:100
+    })
+    .animate({
+      position:'relative',
+      top: 0
+    });
+};
+
+//add click event funct
+var clickBox = function() {
+  $("cube").on("click", function() {
+    //rotate cycle
+    if (state <= 5) {
+      state++;
+    } else {
+      state = 0;
+    }
+    $('#cube').removeClass().addClass(cubeRotateAry[state]);
+
+    //animate headline
+    headline();
+    typeIt();
+    gather();
+    deleteNote();
+
+    //show note boxes
+    $("#input-area").show();
+    $("#saved-area").show();
+  });
+};
+
+//ajax call to do scrape
+var fetchData = function() {
+  $.ajax({
+    type: "POST",
+    url: '/fetch'
+  }).done(function(){
+    $("#seek-box").show();
+  }).fail(function() {
+    alert("Sorry. Server unavailable.");
+  });
+};    
