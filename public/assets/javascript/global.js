@@ -29,7 +29,7 @@ var sideAry = ['back', 'right', 'left', 'top', 'bottom', 'front'];
 //ajax get news
 var populate = function() {
   //get JSON with jquery AJAX call
-  $.getJSON('/check', function(data) {
+  $.getJSON('/check', function (data) {
     mongoData = data;
     dataDate = mongoData[mongoData.length -1].date;
     //for item in json add table row and cells to content string
@@ -53,7 +53,7 @@ var gather = function() {
       id: mongoData[idCount]._id
     }
   })
-  .done(function(currentNotes) {
+  .done(function (currentNotes) {
     postNote(currentNotes);
   })
   .fail(function() {
@@ -119,7 +119,6 @@ var deleteNote = function() {
     .fail(function() {
       console.log("Apologies. Server down");
     });
-
   });
 };
 //type animation funct
@@ -145,7 +144,7 @@ var typeIt = function() {
   var summary = mongoData[dataCount].summary;
   dataCount++;
   //new summary
-  (function type () {
+  (function type() {
     console.log(newsText);
     printHeadline = headline.slice(0, ++h);
     printSummary = summary.slice(0, ++s);
@@ -166,7 +165,7 @@ var typeIt = function() {
 var headline = function() {
   var show = "|| Article:" + (dataCount + 1) + " ||";
   $("#headline").text(show);
-  $("#headline").fadeIn()
+  $("#headline").fadeIn();
     .css({
       position: 'relative',
       'text-align':'center',
@@ -175,12 +174,12 @@ var headline = function() {
     .animate({
       position:'relative',
       top: 0
-    });
+    });  
 };
 
 //add click event funct
 var clickBox = function() {
-  $("cube").on("click", function() {
+  $("#cube").on("click", function() {
     //rotate cycle
     if (state <= 5) {
       state++;
