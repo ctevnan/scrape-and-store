@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var scrape = require('../scripts/scrape.js');
-var headlinesController = require('../controllers/headlinesController.js');
+var headlinesController = require('../controllers/headlines.js');
 var notesController = require('../controllers/notes.js');
 
 //use callback to return json data from mongo
@@ -49,6 +49,5 @@ router.delete('/delete', function (req, res) {
     res.json(data);
   });  
 });
-
 
 module.exports = router;

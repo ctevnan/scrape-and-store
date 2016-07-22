@@ -1,6 +1,6 @@
 var makeDate = require('../scripts/date.js');
-var Headline = require('../models/headlinemodel.js');
-var Note = require('../models/notemodel.js');
+var Headline = require('../models/Headline');
+var Note = require('../models/Note');
 
 exports.save = function(data, cb) {
   //create date
@@ -12,7 +12,7 @@ exports.save = function(data, cb) {
           noteText:data.note
         });
 
-        newNote.save(function(err, doc){
+        newNote.save(function (err, doc){
           if (err) {
             console.log(err);
         } else{
@@ -37,7 +37,7 @@ exports.save = function(data, cb) {
   exports.delete = function(data, cb) {
       Note.remove({
         _headlineId:data.id
-      }, function(err, removed){
+      }, function (err, removed){
         if(err){
           console.log(err);
         } else {

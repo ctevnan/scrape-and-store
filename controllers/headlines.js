@@ -1,7 +1,7 @@
 var scrape = require('../scripts/scrape.js');
 var makeDate = require('../scripts/date.js');
-var Headline = require('../models/headlinemodel.js');
-var Note = require('../models/notemodel.js');
+var Headline = require('../models/Headline');
+var Note = require('../models/Note');
 
 //export as fetch
 exports.fetch = function() {
@@ -23,7 +23,7 @@ exports.fetch = function() {
       //find one by headline
       Headline.findOne({
         'headline': obj[current][0]
-      }, function(err, res) {
+      }, function (err, res) {
         if (err) {
           console.log(err);
         }
@@ -36,7 +36,7 @@ exports.fetch = function() {
             date: formattedDate
           });
           //save new entry to db
-          headlineEntry.save(function(err) {
+          headlineEntry.save(function (err) {
             if (err) {
               // console.log(err);
             } else {
