@@ -11,7 +11,7 @@ exports.fetch = function() {
     var obj = data;
 
     //create date
-    var formattedDate = makedate();
+    var formattedDate = makeDate();
 
     //loop over obj results
     for (var i in obj) {
