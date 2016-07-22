@@ -4,11 +4,11 @@ var cheerio = require('cheerio');
 //scrape cnn
 var scrape = function(url, cb) {
   if (url == "http://www.cnn.com") {
-    request(url, function(err, res, body) {
+    request(url, function (err, res, body) {
       var $ = cheerio.load(body);
       var obj = {};
 
-      $('.theme-summary').each(function(i, element){
+      $('.theme-summary').each(function (i, element){
         //articles grouped by class theme-summary
         //use jQuery .children() to find headings, summaries
         var head =$(this).children(".story-heading").text();
@@ -30,9 +30,4 @@ var scrape = function(url, cb) {
   }
 };
 
-module.exports = scrape;          
-        }
-      })
-    })
-  }
-}
+module.exports = scrape;
