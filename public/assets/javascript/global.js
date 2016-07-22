@@ -170,7 +170,7 @@ var headline = function() {
       position: 'relative',
       'text-align':'center',
       top:100
-    })
+    });
     .animate({
       position:'relative',
       top: 0
