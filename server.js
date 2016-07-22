@@ -6,7 +6,7 @@ var cheerio = require('cheerio');
 var logger = require('morgan');
 var mongoose = require('mongoose');  //orm 
 var request = require('request');
-var port = process.env.PORT || 3000;
+var PORT = process.env.PORT || 3000;
 
 var app = express();
 

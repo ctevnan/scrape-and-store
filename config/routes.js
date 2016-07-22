@@ -49,5 +49,6 @@ router.delete('/delete', function (req, res) {
     res.json(data);
   });  
 });
+});
 
 module.exports = router;
