@@ -24,7 +24,7 @@ exports.fetch = function() {
       Headline.findOne({
         'headline': obj[current][0]
       }, function (err, res) {
-        if (err) {
+        if(err) {
           console.log(err);
         }
         //if no match
@@ -38,7 +38,7 @@ exports.fetch = function() {
           //save new entry to db
           headlineEntry.save(function (err) {
             if (err) {
-              // console.log(err);
+              console.log(err);
             } else {
               console.log('successfully added');
             }
@@ -46,7 +46,6 @@ exports.fetch = function() {
         }
       });
     }
-
   });
 };
 
