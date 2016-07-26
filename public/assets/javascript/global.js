@@ -167,7 +167,7 @@ var headline = function() {
   var show = "|| Article:" + (dataCount + 1) + " ||";
   $("#headline").text(show);
   $("#headline").fadeIn();
-   /* .css({
+    .css({
       position: 'relative',
       'text-align':'center',
       top:100
@@ -175,7 +175,7 @@ var headline = function() {
     .animate({
       position:'relative',
       top: 0  
-    });*/  
+    });  
 };  
 
 //add click event funct

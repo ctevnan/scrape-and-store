@@ -72,16 +72,9 @@ h1{
 #cube { transition: transform 2s; }
 
 #headline {
-  position: relative;
-  text-align: center;
-  top: 100;
   color: white;
   font-size: 40px;
   opacity: .85;
-}
-#headline.animate({
-  position: relative;
-  top: 0;  
 }  
 #typewriter-headline, #typewriter-summary {
   color: white;
