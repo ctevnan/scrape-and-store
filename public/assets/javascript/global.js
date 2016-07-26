@@ -124,7 +124,7 @@ var deleteNote = function() {
 };
 //type animation funct
 var typeIt = function() {
-  $("typewriter-headline").remove();
+  $("#typewriter-headline").remove();
   $("#typewriter-summary").remove();
   var h = 0;
   var s = 0;
@@ -146,7 +146,7 @@ var typeIt = function() {
   dataCount++;
   //new summary
   (function type() {
-    console.log(newsText);
+    //console.log(newsText);
     printHeadline = headline.slice(0, ++h);
     printSummary = summary.slice(0, ++s);
 
@@ -167,18 +167,16 @@ var headline = function() {
   var show = "|| Article:" + (dataCount + 1) + " ||";
   $("#headline").text(show);
   $("#headline").fadeIn();
-    <style>
     .css({
       position: 'relative',
       'text-align':'center',
       top:100
-    });
+    })
     .animate({
       position:'relative',
-      top: 0
-    </style>  
+      top: 0  
     });  
-  };  
+};  
 
 //add click event funct
 var clickBox = function() {
