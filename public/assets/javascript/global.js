@@ -64,7 +64,7 @@ var gather = function() {
 
 //render notes from data
 var postNote = function(currentNotes) {
-  $("note-box").val("");
+  $("#note-box").val("");
 
   var note = "";
   for (var i = 0; i < currentNotes.length; i++) {
