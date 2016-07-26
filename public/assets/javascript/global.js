@@ -20,6 +20,7 @@ $(document).ready(function() {
 var mongoData;
 var dataCount = 0;
 var dataDate;
+var makeDate;
 
 //rorating cube state
 var state = 0;
@@ -31,7 +32,7 @@ var populate = function() {
   //get JSON with jquery AJAX call
   $.getJSON('/check', function (data) {
     mongoData = data;
-    dataDate = mongoData[mongoData.length -1].date;
+    dataDate = mongoData[mongoData.length -1].makeDate;
     //for item in json add table row and cells to content string
   }).done(function() {
     //running clickbox funct
@@ -166,6 +167,7 @@ var headline = function() {
   var show = "|| Article:" + (dataCount + 1) + " ||";
   $("#headline").text(show);
   $("#headline").fadeIn();
+    <style>
     .css({
       position: 'relative',
       'text-align':'center',
@@ -174,8 +176,9 @@ var headline = function() {
     .animate({
       position:'relative',
       top: 0
+    </style>  
     });  
-};
+  };  
 
 //add click event funct
 var clickBox = function() {
