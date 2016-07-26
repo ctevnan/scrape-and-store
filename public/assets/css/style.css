@@ -16,13 +16,12 @@ h1{
 }
 #city {
   background-image: url("../../assets/images/city.png");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
   z-index: -30;
   height: 100%;
 }
-
 .container {
   width: 400px;
   height: 100%;
@@ -30,17 +29,13 @@ h1{
   position: relative;
   perspective: 1000px;
 }
-
 #cube {
-
   margin:8% auto 0 auto;
   width: 400px;
   height: 400px;
   transform-style: preserve-3d;
   transform: translateZ( -100px );
-/*  opacity: 0.3;*/
 }
-
 #cube figure {
   margin: 0;
   width: 400px;
@@ -51,7 +46,6 @@ h1{
   cursor: pointer;
   overflow: auto;
 }
-
 #face-color{
   background-color: deepskyblue;
   opacity: 0.075;
@@ -77,13 +71,19 @@ h1{
 
 #cube { transition: transform 2s; }
 
-#headline{
+#headline {
+  position: relative;
+  text-align: center;
+  top: 100;
   color: white;
   font-size: 40px;
   opacity: .85;
 }
-
-#typewriter-headline, #typewriter-summary{
+#headline.animate({
+  position: relative;
+  top: 0;  
+}  
+#typewriter-headline, #typewriter-summary {
   color: white;
   font-weight: bold;
   font-size: 26px;
@@ -94,9 +94,7 @@ h1{
 #typewriter-summary{
   padding-top: 0;
 }
-
 #seek-box{
-  /*  background-color: white;*/
   position: absolute;
   width: 100px;
   height: 100px;
@@ -112,14 +110,13 @@ h1{
 #input-box input[type="text"], textarea {
   color: deepskyblue;
   background-color : black;
-    text-align: left;
-    padding-top: 1px;
-    width: 200px;
-    height: 300px;
-    font-size: 20px;
-    opacity: .78;
+  text-align: left;
+  padding-top: 1px;
+  width: 200px;
+  height: 300px;
+  font-size: 20px;
+  opacity: .78;
 }
-
 #note-button {
   color: black;
   opacity: .45;
@@ -134,21 +131,19 @@ h1{
 }
 #note-box {
   background-color: black;
-    font-size: 20px;
-    opacity: .58;
-    width: 200px;
-    height: 300px;
+  font-size: 20px;
+  opacity: .58;
+  width: 200px;
+  height: 300px;
 }
-
 #delete-button {
-    color: black;
-    opacity: .65;
+  color: black;
+  opacity: .65;
   background-color : darkslategray;
   width: 200px;
   height: 110px;
   cursor: pointer;
 }
-
 .button {
   width: 80px;
   height: 80px;
@@ -157,7 +152,6 @@ h1{
   padding:10px;
   cursor: pointer;
 }
-
 @media screen and (min-height:900px) {
   .container, #input-area, #saved-area{
     margin-top: 20%;
