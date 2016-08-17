@@ -8,11 +8,11 @@ var scrape = function(url, cb) {
       var $ = cheerio.load(body);
       var obj = {};
 
-      $('.theme-summary').each(function (i, element){
+      $(".theme-summary").each(function (i, element){
         //articles grouped by class theme-summary
         //use jQuery .children() to find headings, summaries
-        var head =$(this).children(".story-heading").text();
-        var sum = $(this).children(".summary").text();
+        var head =$("this").children(".story-heading").text();
+        var sum = $("this").children(".summary").text();
 
         if (head !== "" && sum !== ""){
           //filter data, trim
