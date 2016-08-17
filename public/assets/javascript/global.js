@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('.container').hide();
+  $(".container").hide();
   //get data
   fetchData();
 
@@ -11,7 +11,7 @@ $(document).ready(function() {
   $("#seek-box").click(function() {
     //put data in html
     populate();
-    $('.container').show();
+    $(".container").show();
     $("#seek-box").hide();
   });
 });
@@ -24,13 +24,13 @@ var makeDate;
 
 //rorating cube state
 var state = 0;
-var cubeRotateAry = ['show-front', 'show-back', 'show-right', 'show-left', 'show-top', 'show-bottom'];
-var sideAry = ['back', 'right', 'left', 'top', 'bottom', 'front'];
+var cubeRotateAry = ["show-front", "show-back", "show-right", "show-left", "show-top", "show-bottom"];
+var sideAry = ["back", "right", "left", "top", "bottom", "front"];
 
 //ajax get news
 var populate = function() {
   //get JSON with jquery AJAX call
-  $.getJSON('/check', function (data) {
+  $.getJSON("/check", function (data) {
     mongoData = data;
     dataDate = mongoData[mongoData.length -1].makeDate;
     //for item in json add table row and cells to content string
@@ -49,7 +49,7 @@ var gather = function() {
   $.ajax({
     type: "POST",
     dataType: "json",
-    url: '/gather',
+    url: "/gather",
     data: {
       id: mongoData[idCount]._id
     }
@@ -76,14 +76,14 @@ var postNote = function(currentNotes) {
 
 //function with listener to save notes and clear note taking area
 var saveNote = function() {
-  $("#note-button").on('click', function() {
+  $("#note-button").on("click", function() {
     var text = $("#input-box").val();
     var idCount = dataCount - 1;
 
     $.ajax({
       type: "POST",
       dataType: "json",
-      url: '/save',
+      url: "/save",
       data: {
         id: mongoData[idCount]._id,
         date: dataDate,
@@ -103,7 +103,7 @@ var saveNote = function() {
 
 //function with listener to delete notes      
 var deleteNote = function() {
-  $("#delete-button").on('click', function() {
+  $("#delete-button").on("click", function() {
     var idCount = dataCount - 1;
 
     $.ajax({
