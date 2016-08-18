@@ -51,7 +51,7 @@ var gather = function() {
     dataType: "json",
     url: "/gather",
     data: {
-      id: mongoData[idCount]._id
+      id: mongoData[idCount].id
     }
   })
   .done(function (currentNotes) {
@@ -68,7 +68,7 @@ var postNote = function(currentNotes) {
 
   var note = "";
   for (var i = 0; i < currentNotes.length; i++) {
-    note = note + currentNotes[i].noteText + '\n';
+    note = note + currentNotes[i].noteText + "\n";
   }
 
   $("#note-box").val(note);
@@ -109,7 +109,7 @@ var deleteNote = function() {
     $.ajax({
       type: "DELETE",
       dataType: "json",
-      url: '/delete',
+      url: "/delete",
       data: {
         id: mongoData[idCount]._id,
       }
@@ -168,14 +168,15 @@ var headline = function() {
   $("#headline").text(show);
   $("#headline").fadeIn();
     .css({
-      position: 'relative',
-      'text-align':'center',
+      position: "relative",
+      "text-align":"center",
       top:100
     })
     .animate({
-      position:'relative',
+      position:"relative",
       top: 0  
-    });  
+    });
+  });    
 };  
 
 //add click event funct
@@ -187,7 +188,7 @@ var clickBox = function() {
     } else {
       state = 0;
     }
-    $('#cube').removeClass().addClass(cubeRotateAry[state]);
+    $("#cube").removeClass().addClass(cubeRotateAry[state]);
 
     //animate headline
     headline();
@@ -205,7 +206,7 @@ var clickBox = function() {
 var fetchData = function() {
   $.ajax({
     type: "POST",
-    url: '/fetch'
+    url: "/fetch"
   }).done(function(){
     $("#seek-box").show();
   }).fail(function() {
